@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.math.maths;
 
-import org.firstinspires.ftc.teamcode.extrautilslib.core.misc.EULConstants;
+import org.firstinspires.ftc.teamcode.math.misc.EULConstants;
 
 public class EULMathEx {
 

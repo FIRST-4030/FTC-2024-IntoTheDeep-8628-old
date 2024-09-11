@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode.math.maths.matrices;
 
-import org.firstinspires.ftc.teamcode.extrautilslib.core.maths.vectors.Vector2d;
-import org.firstinspires.ftc.teamcode.extrautilslib.core.maths.vectors.Vector3d;
+import org.firstinspires.ftc.teamcode.math.maths.vectors.Vector2d;
+import org.firstinspires.ftc.teamcode.math.maths.vectors.Vector3d;
 
 public class Matrix3d implements EULMatrix<Matrix3d, Vector3d>{
 
