@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.utils.misc;
+package org.firstinspires.ftc.teamcode.math.misc;
 
 public class EULConstants {
 

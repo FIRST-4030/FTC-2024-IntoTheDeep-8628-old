@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.utils.maths.vectors;
+package org.firstinspires.ftc.teamcode.math.maths.vectors;
 
 /**
  * Interface encapsulates the custom implementations of mathematical Vectors, storing them as points on a cartesian coordinate plane

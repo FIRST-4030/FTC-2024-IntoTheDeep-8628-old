@@ -1,8 +1,8 @@
-package org.firstinspires.ftc.teamcode.utils.maths.matrices;
+package org.firstinspires.ftc.teamcode.math.maths.matrices;
 
-import org.firstinspires.ftc.teamcode.utils.maths.vectors.Vector2d;
+import org.firstinspires.ftc.teamcode.extrautilslib.core.maths.vectors.Vector2d;
 
-public class Matrix2d implements EULMatrix<Matrix2d, Vector2d> {
+public class Matrix2d implements EULMatrix<Matrix2d, Vector2d>{
 
     public double[][] matrix;
 

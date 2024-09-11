@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.utils.maths.vectors;
+package org.firstinspires.ftc.teamcode.math.maths.vectors;
 
 public class Vector2d implements EULVector<Vector2d> {
 

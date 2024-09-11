@@ -1,6 +1,6 @@
-package org.firstinspires.ftc.teamcode.utils.maths.matrices;
+package org.firstinspires.ftc.teamcode.math.maths.matrices;
 
-import org.firstinspires.ftc.teamcode.utils.maths.vectors.EULVector;
+import org.firstinspires.ftc.teamcode.extrautilslib.core.maths.vectors.EULVector;
 
 public interface EULMatrix<M extends EULMatrix, V extends EULVector> {
 
