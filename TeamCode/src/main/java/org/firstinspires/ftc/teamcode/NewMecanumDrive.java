@@ -278,7 +278,7 @@ public class NewMecanumDrive {
             reset = false;
         }
         //get the current robot heading to use for field centric
-        //robotAngle = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
+        robotAngle = teleOpImu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
         //y values are inverted
         joystickY = -1 * Math.pow(control.y, 3);
         joystickX = Math.pow(control.x, 3);
@@ -299,7 +299,7 @@ public class NewMecanumDrive {
             holdHeading(headingError);
         }
 
-
+        convertToFieldCentric();
         //uses either dpad or joystick to drive motors to the proper power by normalizing values to one
         double normalization = Math.max(Math.abs(joystickX) + Math.abs(joystickY) + Math.abs(joystickR), 1);
         leftFront.setPower((joystickY + joystickX + joystickR)/normalization);
@@ -309,6 +309,10 @@ public class NewMecanumDrive {
         return reset;
     }
 
+    public void convertToFieldCentric(){
+        joystickX = joystickX * Math.cos(-robotAngle) - joystickY * Math.sin(-robotAngle);
+        joystickY = joystickX * Math.sin(-robotAngle ) + joystickY * Math.cos(-robotAngle);
+    }
 
     public void holdHeading(double headingError){
         if(Math.abs(joystickR) > 0.05){

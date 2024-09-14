@@ -60,9 +60,8 @@ public class MecanumAuto extends LinearOpMode {
 
 
         vision = new ComputerVision(hardwareMap);
-        while (vision.visionPortal.getCameraState() == OPENING_CAMERA_DEVICE) {
+        while (vision.visionPortal.getCameraState() == OPENING_CAMERA_DEVICE) {}
 
-        }
         vision.setActiveCameraOne();
         NewMecanumDrive drive = new NewMecanumDrive(hardwareMap, startPose.toPose2d());
 

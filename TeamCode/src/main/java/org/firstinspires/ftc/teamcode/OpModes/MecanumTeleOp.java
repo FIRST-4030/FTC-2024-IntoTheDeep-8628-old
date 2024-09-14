@@ -30,6 +30,7 @@ public class MecanumTeleOp extends OpMode {
     Orientation or;
     IMU.Parameters myIMUparameters;
     ElapsedTime timer = new ElapsedTime();
+    ElapsedTime headingTimer = new ElapsedTime();
     double deltaTime;
     double previousTime;
 
@@ -44,6 +45,7 @@ public class MecanumTeleOp extends OpMode {
     double[] dpadPowerArray = new double[4];
     double powerCoefficient = 1;
     boolean precisionDrive = false;
+    boolean resetHeading = false;
     DcMotor paralellEncoder;
 
 
@@ -77,13 +79,12 @@ public class MecanumTeleOp extends OpMode {
 
     @Override
     public void loop() {
+        handleInput();
 
         deltaTime = timer.milliseconds() - previousTime;
         previousTime += deltaTime;
 
         telemetry.addData("deltatime: ", deltaTime);
-        handleInput();
-        outputLog();
 
         or = imu.getRobotOrientation(AxesReference.INTRINSIC, AxesOrder.XYZ, AngleUnit.RADIANS);
         headingError = or.thirdAngle - globalIMUHeading;
@@ -93,13 +94,31 @@ public class MecanumTeleOp extends OpMode {
         resetIMU = drive.update(mecanumController, dpadPowerArray, headingError, resetIMU, powerCoefficient, precisionDrive);
 
         telemetry.update();
+        outputLog();
     }
 
     public void handleInput() {
         inputHandler.loop();
         mecanumController = new Vector3d((gamepad1.right_stick_x * driveCoefficient), (gamepad1.right_stick_y * driveCoefficient), (gamepad1.left_stick_x * driveCoefficient));
+        //Reset Field-Centric drive by pressing B
+        if(inputHandler.up("D1:B")){
+            resetIMU = true;
+        }
+
+        if(gamepad1.left_stick_x != 0){
+            resetHeading = true;
+            headingTimer.reset();
+        }
+        if(resetHeading){
+            if(headingTimer.milliseconds() > 250){
+                globalIMUHeading = or.thirdAngle;
+                resetHeading = false;
+            }
+        }
     }
-    public void outputLog() {}
+    public void outputLog() {
+
+    }
 }
 
 
